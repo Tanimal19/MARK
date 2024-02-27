@@ -128,5 +128,5 @@ By the way, `Victor` is the combination of `voice` and `editor` (very intuitive)
 
 - 2/27
   - Some UI improve
-  - Add search box (but no functionality)
+  - Add searching (search and highlight)
 <br>
