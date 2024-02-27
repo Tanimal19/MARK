@@ -1,0 +1,40 @@
+{
+  "name": "victor",
+  "productName": "Victor",
+  "version": "1.0.0",
+  "description": "Simple markdown editor with voice input",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Tanimal",
+    "email": "tanimal1912@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/speech": "^6.1.0",
+    "@google-cloud/storage": "^7.7.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "highlight.js": "^11.9.0",
+    "markdown-it": "^14.0.0",
+    "markdown-it-imsize": "^2.0.1",
+    "mic": "^2.1.2",
+    "node-record-lpcm16": "^1.0.1",
+    "puppeteer": "^21.7.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.2.0",
+    "@electron-forge/maker-deb": "^7.2.0",
+    "@electron-forge/maker-rpm": "^7.2.0",
+    "@electron-forge/maker-squirrel": "^7.2.0",
+    "@electron-forge/maker-zip": "^7.2.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
+    "electron": "^28.1.0"
+  }
+}
