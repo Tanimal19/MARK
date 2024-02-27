@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Victor Logo" src="https://github.com/Tanimal19/my-app/blob/97930571881ae1cfe475729db7296b7b81448464/Logo(no%20text).svg" width="180px">
+  <img alt="Victor Logo" src="https://github.com/Tanimal19/Victor/blob/2780a488d727fe62bc0f57a9ab6769f92bfcdbf7/Logo(no%20text).svg" width="180px">
   <br>
   <br>
   <strong>
