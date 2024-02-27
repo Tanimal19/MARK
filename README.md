@@ -125,3 +125,8 @@ By the way, `Victor` is the combination of `voice` and `editor` (very intuitive)
 - 2/16
   - Making logo of `victor` (which is not so good)
 <br>
+
+- 2/27
+  - Some UI improve
+  - Add search box (but no functionality)
+<br>
