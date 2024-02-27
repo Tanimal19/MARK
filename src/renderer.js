@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateHeight() {
     inputEle.style.height = "auto";
-    // I don't know where the 4 is ; the lineHeight is for line-highlight
-    inputEle.style.height = inputEle.scrollHeight + (editorEle.offsetHeight - lineHeight * 2 - 4) + 'px';
+    inputEle.style.height = inputEle.scrollHeight + (editorEle.offsetHeight - lineHeight) + 'px';
   }
 
   function updateLineIndex() {
@@ -41,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     const line = getCursorLine();
     cursorLineHighlight(line);
+    if (searching) wordHighlight(keyword.value);
     updatePrompt(line);
     fit();
   }
@@ -144,6 +144,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if (lineNumberList[prevHighlight - 1]) lineNumberList[prevHighlight - 1].classList.remove('highlight');
     lineNumberList[cursorLineNumber - 1].classList.add('highlight');
     prevHighlight = cursorLineNumber;
+  }
+
+  /* Word Highlight */
+  const backdropEle = document.getElementById('backdrop');
+  const wordHighlightEle = document.getElementById('word-highlight');
+
+  function wordHighlight(word) {
+    const text = inputEle.value;
+    const regex = new RegExp(word, 'g');
+    wordHighlightEle.innerHTML = text.replace(/\n/g, '<br>').replace(regex, `<mark>${word}</mark>`);
   }
 
 
@@ -321,6 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   inputEle.addEventListener('scroll', function () {
     syncInputScrollBar();
+    backdropEle.scrollTop = inputEle.scrollTop;
   });
 
   editorEle.addEventListener('scroll', function () {
@@ -513,6 +524,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   /* Search */
+  let searching = false;
   const searchWrap = document.getElementById('search-wrap');
   const keyword = document.getElementById('keyword');
   const closeSrcBtn = document.getElementById('close-search');
@@ -522,6 +534,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (e.key == 'f' || e.key == 'F') {
         searchWrap.classList.remove('hidden');
         keyword.focus();
+        searching = true;
       }
     }
   });
@@ -529,15 +542,13 @@ document.addEventListener('DOMContentLoaded', function () {
   closeSrcBtn.addEventListener('mousedown', function () {
     searchWrap.classList.add('hidden');
     keyword.value = "";
+    searching = false;
+    wordHighlightEle.innerHTML = "";
   });
 
   keyword.addEventListener("input", function () {
-    searchContent(keyword.value);
+    wordHighlight(keyword.value);
   });
-
-  function searchContent(key) {
-
-  }
 
 })
 

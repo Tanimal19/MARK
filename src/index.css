@@ -8,7 +8,6 @@
 
 :root {
   --line-height: 25px;
-  --line-height-r: -25px;
   --default-tb-margin: 10px;
 
   --normal-font-sz: 16px;
@@ -128,6 +127,7 @@ html {
   padding: 0 10px;
 }
 
+
 #line-number {
   font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
@@ -155,19 +155,39 @@ html {
   flex: 1;
   margin: 0;
   height: 0;
+  position: relative;
 }
 
 #line-highlight {
-  position: relative;
+  position: absolute;
   top: 0;
   width: 100%;
   height: var(--line-height);
   background-color: #aeaeae2b;
 }
 
+#backdrop {
+  position: absolute;
+  top: 0;
+  overflow: auto;
+}
+
+#word-highlight {
+  color: transparent;
+  white-space-collapse: preserve;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  line-height: var(--line-height);
+}
+
+#word-highlight mark {
+  color: transparent;
+  background-color: var(--icon-hover-background);
+}
+
 #input-textarea {
-  position: relative;
-  top: var(--line-height-r);
+  position: absolute;
+  top: 0;
   width: 100%;
   overflow-y: hidden;
   overflow-x: hidden;

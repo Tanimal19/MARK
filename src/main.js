@@ -3,8 +3,31 @@ const path = require('path');
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 
-const path = require('path');
-const hljs = require('highlight.js/lib/common');
+// Imports the Google Cloud client library
+const recorder = require('node-record-lpcm16');
+const speech = require('@google-cloud/speech');
+
+const keyFile = './src/extraResources/voice-editor-key.json';
+//const keyFile = path.join(process.resourcesPath, 'voice-editor-key.json');
+const client = new speech.SpeechClient({
+  keyFilename: keyFile,
+});
+
+const request = {
+  config: {
+    encoding: 'LINEAR16',
+    sampleRateHertz: 16000,
+    languageCode: 'en-US',
+    model: 'default',
+  },
+  interimResults: false, // If you want interim results, set this to true
+};
+
+// Apple user setting
+const jsonFile = './src/extraResources/victor.json';
+//const jsonFile = path.join(process.resourcesPath, 'victor.json');
+let jsonData = fs.readFileSync(jsonFile);
+let jsonObj = JSON.parse(jsonData);
 
 /*
  *  Apply markdown-it
