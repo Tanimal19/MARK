@@ -135,7 +135,7 @@ html {
   font-weight: 700;
   width: 40px;
   height: auto;
-  pointer-events: none;
+  pointer-events: none !important;
   margin-right: 10px;
 }
 
@@ -170,7 +170,10 @@ html {
 #backdrop {
   position: absolute;
   top: 0;
-  overflow: auto;
+  width: 100%;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 #word-highlight {
@@ -436,6 +439,10 @@ img {
   stroke: var(--primary-color);
 }
 
+.inbox-icon.inactive svg {
+  stroke: var(--scrollbar-color);
+}
+
 .inbox-icon:hover {
   background-color: var(--icon-hover-background);
 }
@@ -443,7 +450,7 @@ img {
 /* Search */
 #search-wrap {
   height: 30px;
-  width: 300px;
+  width: 340px;
 
   position: absolute;
   top: 10px;
@@ -473,7 +480,7 @@ img {
   flex: 1;
 
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 10px;
   border: none;
   border-bottom: 1px solid var(--primary-color);
   outline: none;
@@ -483,6 +490,22 @@ img {
   font-weight: 300;
   color: var(--primary-color);
   background-color: var(--background-color);
+}
+
+#search-prompt {
+  height: 20px;
+  width: 80px;
+  pointer-events: none;
+
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+
+  margin-right: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--primary-color);
 }
 
 /* Prompt */

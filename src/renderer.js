@@ -149,13 +149,15 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Word Highlight */
   const backdropEle = document.getElementById('backdrop');
   const wordHighlightEle = document.getElementById('word-highlight');
+  const searchPromptEle = document.getElementById('search-prompt');
   let wordIndex = [];
   let markWords;
   let curWord;
 
   function wordHighlight(word) {
-    const text = inputEle.value;
+    const text = escapeHtml(inputEle.value);
 
+    // avoid length error
     if (text == "" || word == "") return;
 
     const regex = new RegExp(word, 'g');
@@ -168,6 +170,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     wordHighlightEle.innerHTML = text.replace(regex, `<mark>${word}</mark>`).replace(/\n/g, '<br>');
     markWords = wordHighlightEle.querySelectorAll('mark');
+
+    if (markWords.length > 0) {
+      markWords[0].classList.add('current');
+      upSrcBtn.classList.remove('inactive');
+      downSrcBtn.classList.remove('inactive');
+      searchPromptEle.textContent = "1 of " + markWords.length;
+    }
+    else {
+      upSrcBtn.classList.add('inactive');
+      downSrcBtn.classList.add('inactive');
+      searchPromptEle.textContent = "No Results";
+    }
   }
 
 
@@ -191,12 +205,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (scrollbar.scrollLeft === prevScroll) return;
     prevScroll = scrollbar.scrollLeft;
     inputEle.scrollLeft = prevScroll;
+    backdropEle.scrollLeft = prevScroll;
   }
 
   function syncInputScrollBar() {
     if (inputEle.scrollLeft === prevScroll) return;
     prevScroll = inputEle.scrollLeft;
     scrollbar.scrollLeft = prevScroll;
+    backdropEle.scrollLeft = prevScroll;
   }
 
 
@@ -573,7 +589,8 @@ document.addEventListener('DOMContentLoaded', function () {
     curWord--;
     if (curWord < 0) curWord = wordIndex.length - 1;
     markWords[curWord].classList.add('current');
-    markWords[curWord].focus();
+    markWords[curWord].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    searchPromptEle.textContent = (curWord + 1) + " of " + markWords.length;
   });
 
   downSrcBtn.addEventListener('mousedown', function () {
@@ -581,7 +598,8 @@ document.addEventListener('DOMContentLoaded', function () {
     curWord++;
     if (curWord >= wordIndex.length) curWord = 0;
     markWords[curWord].classList.add('current');
-    markWords[curWord].focus();
+    markWords[curWord].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    searchPromptEle.textContent = (curWord + 1) + " of " + markWords.length;
   });
 
 })
