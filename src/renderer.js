@@ -149,11 +149,25 @@ document.addEventListener('DOMContentLoaded', function () {
   /* Word Highlight */
   const backdropEle = document.getElementById('backdrop');
   const wordHighlightEle = document.getElementById('word-highlight');
+  let wordIndex = [];
+  let markWords;
+  let curWord;
 
   function wordHighlight(word) {
     const text = inputEle.value;
+
+    if (text == "" || word == "") return;
+
     const regex = new RegExp(word, 'g');
-    wordHighlightEle.innerHTML = text.replace(/\n/g, '<br>').replace(regex, `<mark>${word}</mark>`);
+    let match;
+    wordIndex = [];
+    curWord = 0;
+
+    while ((match = regex.exec(text)) != null) {
+      wordIndex.push(match.index);
+    }
+    wordHighlightEle.innerHTML = text.replace(regex, `<mark>${word}</mark>`).replace(/\n/g, '<br>');
+    markWords = wordHighlightEle.querySelectorAll('mark');
   }
 
 
@@ -513,6 +527,7 @@ document.addEventListener('DOMContentLoaded', function () {
   secondColor.value = window.customAPI.getUser('--secondary-color');
   secondColor.addEventListener('change', function () {
     changeUserSetting('--secondary-color', secondColor.value);
+    changeUserSetting('--curword-highlight', secondColor.value.toString() + '75');
   });
 
   const accentColor = document.getElementById('accent-color');
@@ -548,6 +563,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   keyword.addEventListener("input", function () {
     wordHighlight(keyword.value);
+  });
+
+  const upSrcBtn = document.getElementById('up-search');
+  const downSrcBtn = document.getElementById('down-search');
+
+  upSrcBtn.addEventListener('mousedown', function () {
+    markWords[curWord].classList.remove('current');
+    curWord--;
+    if (curWord < 0) curWord = wordIndex.length - 1;
+    markWords[curWord].classList.add('current');
+    markWords[curWord].focus();
+  });
+
+  downSrcBtn.addEventListener('mousedown', function () {
+    markWords[curWord].classList.remove('current');
+    curWord++;
+    if (curWord >= wordIndex.length) curWord = 0;
+    markWords[curWord].classList.add('current');
+    markWords[curWord].focus();
   });
 
 })

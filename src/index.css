@@ -27,6 +27,7 @@
   --accent-color: #D56AA0;
   --background-color: #F7F9F7;
   --icon-hover-background: #D56AA060;
+  --curword-highlight: #009FB760;
   --scrollbar-color: #31393c85;
 }
 
@@ -183,6 +184,10 @@ html {
 #word-highlight mark {
   color: transparent;
   background-color: var(--icon-hover-background);
+}
+
+.current {
+  background-color: var(--curword-highlight) !important;
 }
 
 #input-textarea {
@@ -413,10 +418,13 @@ img {
   color: var(--primary-color);
 }
 
-.inbox-icon {
+#close-record {
   position: absolute;
   top: 5px;
   right: 5px;
+}
+
+.inbox-icon {
   padding: 0px;
   border-radius: 4px;
   height: 20px;
@@ -435,11 +443,11 @@ img {
 /* Search */
 #search-wrap {
   height: 30px;
-  width: 250px;
+  width: 300px;
 
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 20px;
 
   border: 1px solid var(--secondary-color);
   border-radius: 5px;
@@ -455,12 +463,8 @@ img {
   background-color: var(--background-color);
 }
 
-#close-search {
-  position: relative;
-  top: 0px;
-  right: 0px;
+#search-wrap .inbox-icon {
   display: flex;
-
   margin-right: 5px;
 }
 
