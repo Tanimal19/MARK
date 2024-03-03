@@ -155,20 +155,30 @@ document.addEventListener('DOMContentLoaded', function () {
   let curWord;
 
   function wordHighlight(word) {
-    const text = escapeHtml(inputEle.value);
+    const text = inputEle.value;
 
     // avoid length error
     if (text == "" || word == "") return;
 
     const regex = new RegExp(word, 'g');
     let match;
+    let newtext = "";
+    let end;
+    let lastEnd = 0;
     wordIndex = [];
     curWord = 0;
 
     while ((match = regex.exec(text)) != null) {
       wordIndex.push(match.index);
+      end = match.index + match[0].length;
+
+      newtext += text.substring(lastEnd, match.index).replace(/[&<>"'/]/g, ' ') + '<mark>' + word + '</mark>';
+
+      lastEnd = end;
     }
-    wordHighlightEle.innerHTML = text.replace(regex, `<mark>${word}</mark>`).replace(/\n/g, '<br>');
+    newtext += text.substring(end);
+
+    wordHighlightEle.innerHTML = newtext;
     markWords = wordHighlightEle.querySelectorAll('mark');
 
     if (markWords.length > 0) {
