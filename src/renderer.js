@@ -138,12 +138,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function cursorLineHighlight(cursorLineNumber) {
-    lineHighlightEle.style.top = (lineHeight * (cursorLineNumber - 1)) + 'px';
+    if (curHighSwitch.checked) {
+      lineHighlightEle.style.top = (lineHeight * (cursorLineNumber - 1)) + 'px';
 
-    let lineNumberList = lineNumberEle.querySelectorAll('div');
-    if (lineNumberList[prevHighlight - 1]) lineNumberList[prevHighlight - 1].classList.remove('highlight');
-    lineNumberList[cursorLineNumber - 1].classList.add('highlight');
-    prevHighlight = cursorLineNumber;
+      let lineNumberList = lineNumberEle.querySelectorAll('div');
+      if (lineNumberList[prevHighlight - 1]) lineNumberList[prevHighlight - 1].classList.remove('highlight');
+      lineNumberList[cursorLineNumber - 1].classList.add('highlight');
+      prevHighlight = cursorLineNumber;
+    }
   }
 
   /* Word Highlight */
@@ -211,18 +213,25 @@ document.addEventListener('DOMContentLoaded', function () {
     fakecontent.style.width = inputEle.scrollWidth + 'px';
   }
 
-  function syncScrollBarInput() {
+  function syncScrollBar() {
     if (scrollbar.scrollLeft === prevScroll) return;
     prevScroll = scrollbar.scrollLeft;
     inputEle.scrollLeft = prevScroll;
     backdropEle.scrollLeft = prevScroll;
   }
 
-  function syncInputScrollBar() {
+  function syncInput() {
     if (inputEle.scrollLeft === prevScroll) return;
     prevScroll = inputEle.scrollLeft;
     scrollbar.scrollLeft = prevScroll;
     backdropEle.scrollLeft = prevScroll;
+  }
+
+  function syncBackdrop() {
+    if (backdropEle.scrollLeft === prevScroll) return;
+    prevScroll = backdropEle.scrollLeft;
+    inputEle.scrollLeft = prevScroll;
+    scrollbar.scrollLeft = prevScroll;
   }
 
 
@@ -366,12 +375,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* Scroll events */
   scrollbar.addEventListener('scroll', function () {
-    syncScrollBarInput();
+    syncScrollBar();
   });
 
   inputEle.addEventListener('scroll', function () {
-    syncInputScrollBar();
-    backdropEle.scrollTop = inputEle.scrollTop;
+    syncInput();
+  });
+
+  backdropEle.addEventListener('scroll', function () {
+    //syncBackdrop();
+    //console.log('SYNC');
   });
 
   editorEle.addEventListener('scroll', function () {
@@ -563,6 +576,28 @@ document.addEventListener('DOMContentLoaded', function () {
     changeUserSetting('--icon-hover-background', accentColor.value.toString() + '60');
   });
 
+  const curHighSwitch = document.getElementById('curhigh-switch');
+  curHighSwitch.addEventListener('change', function () {
+    if (curHighSwitch.checked) {
+      lineHighlightEle.classList.remove('hidden');
+    }
+    else {
+      lineHighlightEle.classList.add('hidden');
+      let lineNumberList = lineNumberEle.querySelectorAll('div');
+      if (lineNumberList[prevHighlight - 1]) lineNumberList[prevHighlight - 1].classList.remove('highlight');
+    }
+  });
+
+  const voiceSwitch = document.getElementById('voice-switch');
+  voiceSwitch.addEventListener('change', function () {
+    if (voiceSwitch.checked) {
+      recordBtn.classList.remove('hidden');
+    }
+    else {
+      recordBtn.classList.add('hidden');
+    }
+  });
+
 
   /* Search */
   let searching = false;
@@ -599,7 +634,11 @@ document.addEventListener('DOMContentLoaded', function () {
     curWord--;
     if (curWord < 0) curWord = wordIndex.length - 1;
     markWords[curWord].classList.add('current');
+
+    console.log('def;Backdrop:', wordHighlightEle.scrollLeft);
     markWords[curWord].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    console.log('aft;Backdrop:', wordHighlightEle.scrollLeft);
+
     searchPromptEle.textContent = (curWord + 1) + " of " + markWords.length;
   });
 
@@ -608,7 +647,11 @@ document.addEventListener('DOMContentLoaded', function () {
     curWord++;
     if (curWord >= wordIndex.length) curWord = 0;
     markWords[curWord].classList.add('current');
+
+    console.log('def;Backdrop:', wordHighlightEle.scrollLeft);
     markWords[curWord].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    console.log('aft;Backdrop:', wordHighlightEle.scrollLeft);
+
     searchPromptEle.textContent = (curWord + 1) + " of " + markWords.length;
   });
 
