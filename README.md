@@ -25,6 +25,7 @@ By the way, `Victor` is the combination of `voice` and `editor` (very intuitive)
 
 Demo Video (for fun):
 
+![](https://github.com/Tanimal19/Victor/blob/97006bff0ecee23d2fae6d094046294254c73433/Victor%20Trailer%200.001.mp4)
 
 <br>
 <br>
