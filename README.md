@@ -14,15 +14,18 @@
 
 # About ❓
 As a noob in computer science,  
-I make this small project to improve myself during my sophomore winter vacation.  
+I start this project to improve myself at my sophomore winter vacation.  
+Currently, this project is still working in progress, since I'm too lazy.  
+It is a project for fun, so I'm not going to release it for other to use.
   
 `Victor` is a simple markdown editor that supports several voice commands,  
 which is helpful when you want a snack but don't want to dirty your keyboard.
-  
-Currently, this project is still working in progress,  
-since I'm too lazy to achieve the original goal (which is training an AI model to recognize voice commands).
 
 By the way, `Victor` is the combination of `voice` and `editor` (very intuitive).
+
+Demo Video (for fun):
+
+
 <br>
 <br>
 
