@@ -1,44 +1,37 @@
 <div align="center">
-  <img alt="Victor Logo" src="https://github.com/Tanimal19/Victor/blob/2780a488d727fe62bc0f57a9ab6769f92bfcdbf7/Logo(no%20text).svg" width="180px">
+  <img alt="Victor Logo" src="https://github.com/Tanimal19/Victor/blob/2780a488d727fe62bc0f57a9ab6769f92bfcdbf7/Logo(no%20text).svg" width="120px">
   <br>
   <br>
   <strong>
     <p>Victor</p>
   </strong>
   <p>
-    A simple markdown editor that can be controlled by voice.
-    <br>
-    (🚧 working in progress)
+    A simple markdown editor.
   </p>
 </div>
 
 # About ❓
 
-As a noob in computer science,  
-I start this project to improve myself at my sophomore winter vacation.  
-Currently, this project is still working in progress, since I'm too lazy.  
-It is a project for fun, so I'm not going to release it for other to use.
+> [!important]
+> Current Features:
+> - support basic markdown rules
+> - three preview mode (Code/Preview/Both)
+> - light mode/dark mode
+> - search keyword in file
+> - import/export Markdown file
+> - export to pdf file
+> - voice command (🚧 under development)
+
+As a noob in computer science, I start this project to improve myself at my sophomore winter vacation.  
+Since it just a project for fun, I'm not going to release it for other to use.
   
-`Victor` is a simple markdown editor that supports several voice commands,  
-which is helpful when you want a snack but don't want to dirty your keyboard.
+**Victor** is a simple markdown editor that aim to allow user to write and modify their markdown with voice commands,  
+which is helpful when you want a snack but don't want to dirty your keyboard.  
+By the way, **Victor** is the combination of **voice** and **editor** (very intuitive).
 
-By the way, `Victor` is the combination of `voice` and `editor` (very intuitive).
-
-Demo Video (for fun):
-<https://www.youtube.com/watch?v=98SpxLH3CdE>
+Demo Video: <https://www.youtube.com/watch?v=98SpxLH3CdE>
 
 <br>
-<br>
-
-# Guide 📖
-## Installation
-
-## Voice command
-
-## Issue
-- paragraph with links and images can't not display tab indent
-<br>
-
 <br>
 
 # Devlog 📝
