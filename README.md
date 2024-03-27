@@ -6,7 +6,7 @@
     <p>Victor</p>
   </strong>
   <p>
-    A simple markdown editor.
+    simple markdown editor.
   </p>
 </div>
 
@@ -25,11 +25,11 @@
 As a noob in computer science, I start this project to improve myself at my sophomore winter vacation.  
 Since it just a project for self-learning, I might not going to release it. (you can still download the zip)
   
-**Victor** is a simple markdown editor that aim to allow user to write and modify their markdown with voice commands,  
-which is helpful when you want a snack but don't want to dirty your keyboard.  
-By the way, **Victor** is the combination of **voice** and **editor** (very intuitive).
+**Victor** is a simple markdown editor that aim to allow user to write and modify their markdown with voice commands, which is helpful when you want a snack but don't want to dirty your keyboard.  
 
 Demo Video: <https://www.youtube.com/watch?v=98SpxLH3CdE>
+
+By the way, **Victor** is the combination of **voice** and **editor** (very intuitive).
 
 <br>
 <br>
