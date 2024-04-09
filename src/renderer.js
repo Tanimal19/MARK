@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fakecontent.style.width = inputEle.scrollWidth + 'px';
   }
 
+
   function syncScrollBar() {
     if (scrollbar.scrollLeft === prevScroll) return;
     prevScroll = scrollbar.scrollLeft;
@@ -227,11 +228,11 @@ document.addEventListener('DOMContentLoaded', function () {
     backdropEle.scrollLeft = prevScroll;
   }
 
-  function syncBackdrop() {
+  function syncSearch() {
     if (backdropEle.scrollLeft === prevScroll) return;
     prevScroll = backdropEle.scrollLeft;
-    inputEle.scrollLeft = prevScroll;
     scrollbar.scrollLeft = prevScroll;
+    inputEle.scrollLeft = prevScroll;
   }
 
 
@@ -383,8 +384,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   backdropEle.addEventListener('scroll', function () {
-    //syncBackdrop();
-    //console.log('SYNC');
+    syncSearch();
   });
 
   editorEle.addEventListener('scroll', function () {
@@ -462,6 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
       recordBtn.dataset.name = "voice command";
     }
   });
+
 
   /* Dragging transcript-wrap */
   let isDragging = false;
@@ -588,6 +589,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+
   const voiceSwitch = document.getElementById('voice-switch');
   voiceSwitch.addEventListener('change', function () {
     if (voiceSwitch.checked) {
@@ -599,13 +601,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
+
+
   /* Search */
   let searching = false;
   const searchWrap = document.getElementById('search-wrap');
   const keyword = document.getElementById('keyword');
   const closeSrcBtn = document.getElementById('close-search');
 
-  document.addEventListener("keydown", function (e) {
+  inputEle.addEventListener("keydown", function (e) {
     if (e.ctrlKey) {
       if (e.key == 'f' || e.key == 'F') {
         searchWrap.classList.remove('hidden');
@@ -634,10 +638,14 @@ document.addEventListener('DOMContentLoaded', function () {
     curWord--;
     if (curWord < 0) curWord = wordIndex.length - 1;
     markWords[curWord].classList.add('current');
-
-    console.log('def;Backdrop:', wordHighlightEle.scrollLeft);
-    markWords[curWord].scrollIntoView({ behavior: 'smooth', block: 'center' });
-    console.log('aft;Backdrop:', wordHighlightEle.scrollLeft);
+    backdropEle.scrollTo({
+      left: markWords[curWord].offsetLeft - window.innerWidth / 2,
+      behavior: "smooth"
+    });
+    editorEle.scrollTo({
+      top: markWords[curWord].offsetTop - window.innerHeight / 2,
+      behavior: "smooth"
+    });
 
     searchPromptEle.textContent = (curWord + 1) + " of " + markWords.length;
   });
@@ -647,10 +655,14 @@ document.addEventListener('DOMContentLoaded', function () {
     curWord++;
     if (curWord >= wordIndex.length) curWord = 0;
     markWords[curWord].classList.add('current');
-
-    console.log('def;Backdrop:', wordHighlightEle.scrollLeft);
-    markWords[curWord].scrollIntoView({ behavior: 'smooth', block: 'center' });
-    console.log('aft;Backdrop:', wordHighlightEle.scrollLeft);
+    backdropEle.scrollTo({
+      left: markWords[curWord].offsetLeft - window.innerWidth / 2,
+      behavior: "smooth"
+    });
+    editorEle.scrollTo({
+      top: markWords[curWord].offsetTop - window.innerHeight / 2,
+      behavior: "smooth"
+    });
 
     searchPromptEle.textContent = (curWord + 1) + " of " + markWords.length;
   });

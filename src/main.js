@@ -3,12 +3,13 @@ const path = require('path');
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 
+
 // Imports the Google Cloud client library
 const recorder = require('node-record-lpcm16');
 const speech = require('@google-cloud/speech');
 
 const keyFile = './src/extraResources/voice-editor-key.json';
-//const keyFile = path.join(process.resourcesPath, 'voice-editor-key.json');
+// const keyFile = path.join(process.resourcesPath, 'voice-editor-key.json');
 const client = new speech.SpeechClient({
   keyFilename: keyFile,
 });
@@ -22,6 +23,8 @@ const request = {
   },
   interimResults: false, // If you want interim results, set this to true
 };
+
+
 
 // Apple user setting
 const jsonFile = './src/extraResources/victor.json';
@@ -219,6 +222,7 @@ ipcMain.on("exportPdf", (event, content, styleText) => {
   }
 });
 
+
 let recording = null;
 let recognizeStream = null;
 ipcMain.on("startRecord", (event) => {
@@ -255,6 +259,7 @@ ipcMain.on("stopRecord", (event) => {
   recording = null;
   recognizeStream = null;
 });
+
 
 ipcMain.on("saveUser", (event, jsonObj) => {
   fs.writeFileSync(jsonFile, JSON.stringify(jsonObj));
