@@ -12,7 +12,7 @@
 
 # About
 
-**Victor** is a simple markdown editor that is inspired by [Obsidian](https://obsidian.md/)  
+**Victor** is a simple markdown editor that is inspired by [Obsidian](https://obsidian.md/), and built with [Electron](https://www.electronjs.org/)  
 As a noob in computer science, I start this project to improve myself at my sophomore winter vacation.  
 While this is just a project for fun and learning, if you're interested, you can still download it to take a look.  
 I would greatly appreciate any feedback.
