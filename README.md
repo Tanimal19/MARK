@@ -6,7 +6,7 @@
     <p>Victor</p>
   </strong>
   <p>
-    simple markdown editor.
+    simple markdown editor
   </p>
 </div>
 
@@ -15,21 +15,19 @@
 > [!important]
 > Current Features:
 > - support basic markdown rules
+> - indents in markdown
 > - three preview mode (Code/Preview/Both)
 > - light mode/dark mode
 > - search keyword in file
 > - import/export Markdown file
 > - export to pdf file
-> - voice command (🚧 under development)
 
 As a noob in computer science, I start this project to improve myself at my sophomore winter vacation.  
 Since it just a project for self-learning, I might not going to release it. (you can still download the zip)
   
-**Victor** is a simple markdown editor that aim to allow user to write and modify their markdown with intuitive voice commands, which is helpful when you want a snack but don't want to dirty your keyboard.  
+**Victor** is a simple markdown editor that is inspired by [Obsidian](https://obsidian.md/)  
 
 Demo Video: <https://www.youtube.com/watch?v=98SpxLH3CdE>
-
-By the way, **Victor** is the combination of **voice** and **editor** (very intuitive).
 
 <br>
 <br>
@@ -93,16 +91,6 @@ By the way, **Victor** is the combination of **voice** and **editor** (very intu
 
 - 1/22
   - Export PDF using [puppeteer](https://pptr.dev/api/puppeteer.page.pdf)
-  - Testing **google speech-to-text API** (struggling with authentication)
-<br>
-
-- 2/10
-  - [google speech API transcribe streaming audio](https://cloud.google.com/speech-to-text/docs/transcribe-streaming-audio)
-  - Now it can convert streaming audio to text
-<br>
-
-- 2/12
-  - Solve the problem that api doesn't work after packaged
 <br>
 
 - 2/13
@@ -116,7 +104,6 @@ By the way, **Victor** is the combination of **voice** and **editor** (very intu
 
 - 2/15
   - Position prompt: display line and column at bottom right
-  - Turn transcription to a list so user can see what they have said before
 <br>
 
 - 2/16
