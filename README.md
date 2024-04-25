@@ -10,24 +10,27 @@
   </p>
 </div>
 
-# About ❓
+# About
 
-> [!important]
-> Current Features:
-> - support basic markdown rules
-> - indents in markdown
-> - three preview mode (Code/Preview/Both)
-> - light mode/dark mode
-> - search keyword in file
-> - import/export Markdown file
-> - export to pdf file
-
-As a noob in computer science, I start this project to improve myself at my sophomore winter vacation.  
-Since it just a project for self-learning, I might not going to release it. (you can still download the zip)
-  
 **Victor** is a simple markdown editor that is inspired by [Obsidian](https://obsidian.md/)  
+As a noob in computer science, I start this project to improve myself at my sophomore winter vacation.  
+While this is just a project for fun and learning, if you're interested, you can still download it to take a look.  
+I would greatly appreciate any feedback.
 
-Demo Video: <https://www.youtube.com/watch?v=98SpxLH3CdE>
+Demo Video: <https://www.youtube.com/watch?v=4kHRNkl6V8Y&ab_channel=BobCheng>
+
+<br>
+<br>
+
+# Feature
+
+- support basic markdown rules
+- indents in markdown
+- three preview mode (Code/Preview/Both)
+- light mode/dark mode
+- search keyword in markdown
+- import/export markdown file
+- export to pdf file
 
 <br>
 <br>
