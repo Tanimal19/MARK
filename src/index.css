@@ -422,9 +422,9 @@ img {
 }
 
 #close-record {
-  position: absolute;
+  position: sticky;
   top: 5px;
-  right: 5px;
+  left: 100%;
 }
 
 .inbox-icon {
