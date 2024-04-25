@@ -435,62 +435,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.customAPI.exportPdf();
   });
 
-  /* Recording */
-  const recordBtn = document.getElementById('record-button');
-  const transcriptWrap = document.getElementById('transcript-wrap');
-  let recording = false;
-  recordBtn.addEventListener('click', function () {
-    if (recording == false) {
-      recording = true;
-      window.customAPI.startRecord();
-      transcriptWrap.classList.remove('hidden');
-      transcriptWrap.appendChild(document.createElement('ul'));
-      recordBtn.classList.add('side-icon-active');
-      recordBtn.dataset.name = "already active";
-    }
-  });
-
-  const closeRecBtn = document.getElementById('close-record');
-  closeRecBtn.addEventListener('click', function () {
-    if (recording) {
-      recording = false;
-      window.customAPI.stopRecord();
-      transcriptWrap.classList.add('hidden');
-      const transcriptList = document.querySelector('#transcript-wrap ul');
-      transcriptList.remove();
-      recordBtn.classList.remove('side-icon-active');
-      recordBtn.dataset.name = "voice command";
-    }
-  });
-
-
-  /* Dragging transcript-wrap */
-  let isDragging = false;
-  let offsetX, offsetY;
-
-  transcriptWrap.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - transcriptWrap.getBoundingClientRect().left;
-    offsetY = e.clientY - transcriptWrap.getBoundingClientRect().top;
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      const x = e.clientX - offsetX;
-      const y = e.clientY - offsetY;
-
-      transcriptWrap.style.left = `${x}px`;
-      transcriptWrap.style.top = `${y}px`;
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    if (!isElementInViewport(transcriptWrap)) {
-      transcriptWrap.style.left = '50px';
-      transcriptWrap.style.top = `185px`;
-    }
-  });
 
   /* Position Prompt */
   const promptWrap = document.getElementById('prompt-wrap');
@@ -590,19 +534,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  const voiceSwitch = document.getElementById('voice-switch');
-  voiceSwitch.addEventListener('change', function () {
-    if (voiceSwitch.checked) {
-      recordBtn.classList.remove('hidden');
-    }
-    else {
-      recordBtn.classList.add('hidden');
-    }
-  });
-
-
-
-
   /* Search */
   let searching = false;
   const searchWrap = document.getElementById('search-wrap');
@@ -639,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (curWord < 0) curWord = wordIndex.length - 1;
     markWords[curWord].classList.add('current');
     backdropEle.scrollTo({
-      left: markWords[curWord].offsetLeft - window.innerWidth / 2,
+      left: markWords[curWord].offsetLeft - inputEle.clientWidth / 2,
       behavior: "smooth"
     });
     editorEle.scrollTo({
@@ -656,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (curWord >= wordIndex.length) curWord = 0;
     markWords[curWord].classList.add('current');
     backdropEle.scrollTo({
-      left: markWords[curWord].offsetLeft - window.innerWidth / 2,
+      left: markWords[curWord].offsetLeft - inputEle.clientWidth / 2,
       behavior: "smooth"
     });
     editorEle.scrollTo({

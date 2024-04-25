@@ -375,57 +375,7 @@ img {
 }
 
 
-/* Transcript */
-#transcript-wrap {
-  height: 300px;
-  width: 200px;
 
-  position: absolute;
-  left: 50px;
-  top: 185px;
-
-  padding: 5px 10px 5px 20px;
-  border: 1px solid var(--secondary-color);
-  border-radius: 5px;
-
-  cursor: move;
-  user-select: none;
-  overflow-x: scroll;
-  overflow-y: auto;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-
-  background-color: var(--background-color);
-}
-
-#transcript-wrap ul {
-  margin: 0px;
-  padding: 0px;
-}
-
-#transcript-wrap ul li {
-  display: flex;
-  align-items: center;
-
-  padding: 0 10px;
-  border-left: 2px solid var(--primary-color);
-  margin: 10px 0;
-
-  list-style-type: none;
-
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: var(--primary-color);
-}
-
-#close-record {
-  position: sticky;
-  top: 5px;
-  left: 100%;
-}
 
 .inbox-icon {
   padding: 0px;

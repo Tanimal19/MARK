@@ -4,28 +4,6 @@ const fs = require('fs');
 const puppeteer = require('puppeteer');
 
 
-// Imports the Google Cloud client library
-const recorder = require('node-record-lpcm16');
-const speech = require('@google-cloud/speech');
-
-const keyFile = './src/extraResources/voice-editor-key.json';
-// const keyFile = path.join(process.resourcesPath, 'voice-editor-key.json');
-const client = new speech.SpeechClient({
-  keyFilename: keyFile,
-});
-
-const request = {
-  config: {
-    encoding: 'LINEAR16',
-    sampleRateHertz: 16000,
-    languageCode: 'en-US',
-    model: 'default',
-  },
-  interimResults: false, // If you want interim results, set this to true
-};
-
-
-
 // Apple user setting
 const jsonFile = './src/extraResources/victor.json';
 //const jsonFile = path.join(process.resourcesPath, 'victor.json');
@@ -221,45 +199,6 @@ ipcMain.on("exportPdf", (event, content, styleText) => {
     })();
   }
 });
-
-
-let recording = null;
-let recognizeStream = null;
-ipcMain.on("startRecord", (event) => {
-  recording = recorder.record({
-    sampleRateHertz: 16000,
-    threshold: 0,
-    // Other options, see https://www.npmjs.com/package/node-record-lpcm16#options
-    verbose: false,
-    recordProgram: 'sox', // Try also "arecord" or "sox"
-    silence: '10.0',
-  });
-
-  recognizeStream = client
-    .streamingRecognize(request)
-    .on('error', console.error)
-    .on('data', (data) => {
-      const str = data.results[0] && data.results[0].alternatives[0]
-        ? data.results[0].alternatives[0].transcript.trim()
-        : 'timeout';
-      mainWindow.webContents.send('transcript', str);
-    });
-
-  recording
-    .stream()
-    .on('error', err => {
-      console.error('recorder threw an error:', err)
-    })
-    .pipe(recognizeStream);
-
-});
-
-ipcMain.on("stopRecord", (event) => {
-  recording.stop();
-  recording = null;
-  recognizeStream = null;
-});
-
 
 ipcMain.on("saveUser", (event, jsonObj) => {
   fs.writeFileSync(jsonFile, JSON.stringify(jsonObj));

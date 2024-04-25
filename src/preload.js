@@ -31,25 +31,6 @@ contextBridge.exposeInMainWorld(
     ipcRenderer.send("exportPdf", content);
     return;
   },
-  startRecord: () => {
-    ipcRenderer.send("startRecord");
-    ipcRenderer.on('transcript', function (event, str) {
-      const transcriptList = document.querySelector('#transcript-wrap ul');
-      const item = document.createElement('li');
-      item.textContent = str;
-      transcriptList.appendChild(item);
-      const transcriptWrap = document.getElementById('transcript-wrap');
-      transcriptWrap.scrollTop = transcriptWrap.scrollHeight;
-
-      identifyCommand(str);
-    });
-    return;
-  },
-  stopRecord: () => {
-    ipcRenderer.send("stopRecord");
-    ipcRenderer.removeAllListeners('transcript');
-    return;
-  },
   getUser: (property) => {
     return jsonObj[property];
   },
@@ -63,38 +44,3 @@ contextBridge.exposeInMainWorld(
   },
 }
 );
-
-let selectedText;
-
-function identifyCommand(str) {
-  const inputEle = document.getElementById('input-textarea');
-  const start = inputEle.selectionStart;
-  const end = inputEle.selectionEnd;
-
-  const args = str.split(' ');
-
-  switch (args[0]) {
-    case "input":
-      const inputText = str.substring(str.indexOf(' ') + 1).trim();
-
-      const oldValue = inputEle.value;
-      const newValue = oldValue.substring(0, start) + inputText + oldValue.substring(end);
-      inputEle.value = newValue;
-
-      inputEle.focus();
-      inputEle.selectionStart = inputEle.selectionEnd = end + inputText.length;
-      break;
-
-    case "select":
-      inputEle.selectionStart = parseInt(args[1]);
-      inputEle.selectionEnd = parseInt(args[2]);
-      break;
-
-    case "delete":
-      break;
-
-    default:
-      console.log("unknown command");
-
-  }
-}
