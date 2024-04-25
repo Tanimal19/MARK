@@ -24,13 +24,13 @@ Demo Video: <https://www.youtube.com/watch?v=4kHRNkl6V8Y>
 
 # Feature
 
-- support basic markdown rules
-- indents in markdown
-- three preview mode (Code/Preview/Both)
-- light mode/dark mode
-- search keyword in markdown
-- import/export markdown file
-- export to pdf file
+✅ support basic markdown rules  
+✅ indents in markdown  
+✅ three preview mode (Code/Preview/Both)  
+✅ light mode/dark mode  
+✅ search keyword in markdown  
+✅ import/export markdown file  
+✅ export to pdf file  
 
 <br>
 <br>
@@ -117,3 +117,6 @@ Demo Video: <https://www.youtube.com/watch?v=4kHRNkl6V8Y>
   - Some UI improve
   - Add searching (search and highlight)
 <br>
+
+- 4/25 😀
+  - Final check and release zip file
