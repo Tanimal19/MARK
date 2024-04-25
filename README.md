@@ -22,7 +22,7 @@ Demo Video: <https://www.youtube.com/watch?v=4kHRNkl6V8Y>
 <br>
 <br>
 
-# Feature
+# Feature ✨
 
 ✅ support basic markdown rules  
 ✅ indents in markdown  
