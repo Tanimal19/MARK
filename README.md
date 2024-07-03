@@ -17,8 +17,6 @@ As a computer science student, I start this project to improve myself at my soph
 While this is just a project for fun and learning, if you're interested, you can still download it to take a look.  
 I would greatly appreciate any feedback.
 
-Demo Video: <https://www.youtube.com/watch?v=4kHRNkl6V8Y>
-
 <br>
 <br>
 
