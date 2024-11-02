@@ -13,15 +13,14 @@
 # About
 
 **Victor** is a simple markdown editor that is inspired by [Obsidian](https://obsidian.md/), and built with [Electron](https://www.electronjs.org/)  
-As a computer science student, I start this project to improve myself at my sophomore winter vacation.  
+As a computer science student, I started this project to improve myself during my sophomore winter vacation.  
 While this is just a project for fun and learning, if you're interested, you can still download it to take a look.  
 I would greatly appreciate any feedback.
 
 <br>
 <br>
 
-# Feature ✨
-
+# Feature
 ✅ support basic markdown rules  
 ✅ indents in markdown  
 ✅ three preview mode (Code/Preview/Both)  
@@ -68,7 +67,7 @@ I would greatly appreciate any feedback.
 <br>
 
 - 1/14
-  - Spend a lot of time figuring out source code of **markdown-it** (6000+ lines drives me crazy)
+  - Spend a lot of time figuring out source code of **markdown-it**
   - Finally, tab space can appear in markdown preview
   - Disable indent code block, because it's annoying
 <br>
@@ -108,7 +107,7 @@ I would greatly appreciate any feedback.
 <br>
 
 - 2/16
-  - Making logo of `victor` (which is not so good)
+  - Making logo (which is not so good)
 <br>
 
 - 2/27
