@@ -1,10 +1,7 @@
 <div align="center">
-  <img alt="logo" src="" width="120px">
+  <img alt="logo" src="https://github.com/Tanimal19/Victor/blob/1a1d3b9e5a31dd3e27636048966848def0b50832/logo.png" width="300px">
   <br>
   <br>
-  <strong>
-    <p>Mark</p>
-  </strong>
   <p>
     simple markdown editor
   </p>
