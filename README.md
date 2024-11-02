@@ -1,9 +1,9 @@
 <div align="center">
-  <img alt="Victor Logo" src="https://github.com/Tanimal19/Victor/blob/2780a488d727fe62bc0f57a9ab6769f92bfcdbf7/Logo(no%20text).svg" width="120px">
+  <img alt="logo" src="" width="120px">
   <br>
   <br>
   <strong>
-    <p>Victor</p>
+    <p>Mark</p>
   </strong>
   <p>
     simple markdown editor
@@ -12,7 +12,7 @@
 
 # About
 
-**Victor** is a simple markdown editor that is inspired by [Obsidian](https://obsidian.md/), and built with [Electron](https://www.electronjs.org/)  
+**Mark** is a simple markdown editor that is inspired by [Obsidian](https://obsidian.md/), and built with [Electron](https://www.electronjs.org/)  
 As a computer science student, I started this project to improve myself during my sophomore winter vacation.  
 While this is just a project for fun and learning, if you're interested, you can still download it to take a look.  
 I would greatly appreciate any feedback.

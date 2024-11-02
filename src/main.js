@@ -1,12 +1,12 @@
-const { app, BrowserWindow, Menu, ipcMain, dialog, shell, systemPreferences } = require('electron');
+const { app, BrowserWindow, Menu, ipcMain, dialog, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const puppeteer = require('puppeteer');
 
 
-// Apple user setting
-const jsonFile = './src/extraResources/victor.json';
-//const jsonFile = path.join(process.resourcesPath, 'victor.json');
+
+// const jsonFile = './src/extraResources/mark.json'; // for development
+const jsonFile = path.join(process.resourcesPath, 'mark.json');
 let jsonData = fs.readFileSync(jsonFile);
 let jsonObj = JSON.parse(jsonData);
 
@@ -97,7 +97,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   Menu.setApplicationMenu(null);
 };
@@ -124,8 +124,6 @@ app.on('window-all-closed', () => {
   }
 });
 
-
-//console.log(systemPreferences.getMediaAccessStatus('microphone'));
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
